@@ -32,7 +32,7 @@ A Black Ops/GTA 6 inspired interactive portfolio website showcasing Business Int
 
 ### 🔐 Admin Access
 
-- **Access Code**: `tactical2025`
+- **Access Code**: `tactics`
 - **Features**:
   - Update profile information
   - Add/edit/delete projects
