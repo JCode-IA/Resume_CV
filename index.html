@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>José Sirias - BI Analyst Portfolio | TACTICAL HQ</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loading-content">
+            <div class="tactical-logo">
+                <i class="fas fa-crosshairs"></i>
+                <h1>TACTICAL HQ</h1>
+            </div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+            <p>INITIALIZING SYSTEMS...</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="tactical-nav">
+        <div class="nav-brand">
+            <i class="fas fa-chart-line"></i>
+            <span>JC_dev_especial_ops</span>
+        </div>
+        <ul class="nav-menu">
+            <li><a href="#home" data-section="home"><i class="fas fa-home"></i> HQ</a></li>
+            <li><a href="#about" data-section="about"><i class="fas fa-user"></i> INTEL</a></li>
+            <li><a href="#arsenal" data-section="arsenal"><i class="fas fa-cogs"></i> ARSENAL</a></li>
+            <li><a href="#projects" data-section="projects"><i class="fas fa-rocket"></i> MISSIONS</a></li>
+            <li><a href="#experience" data-section="experience"><i class="fas fa-medal"></i> CAMPAIGNS</a></li>
+            <li><a href="#contact" data-section="contact"><i class="fas fa-satellite-dish"></i> COMMS</a></li>
+            <li><a href="#admin" data-section="admin" class="admin-link"><i class="fas fa-shield-alt"></i> ADMIN</a></li>
+        </ul>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="main-container">
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <div class="rank-badge">
+                        <span>RANK</span>
+                        <div class="rank-icon">★★★</div>
+                        <span>BI SPECIALIST</span>
+                    </div>
+                    <h1 class="hero-title">
+                        <span class="glitch" data-text="JOSÉ SIRIAS">JOSÉ SIRIAS</span>
+                        <span class="subtitle">BUSINESS INTELLIGENCE OPERATIVE</span>
+                    </h1>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-number">6+</span>
+                            <span class="stat-label">YEARS ACTIVE</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">30+</span>
+                            <span class="stat-label">ANALYSTS MENTORED</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">75+</span>
+                            <span class="stat-label">INSIGHTFUL DASHBOARDS</span>
+                        </div>
+                    </div>
+                    <div class="hero-actions">
+                        <button class="btn-primary" data-target="projects">
+                            <i class="fas fa-play"></i> VIEW MISSIONS
+                        </button>
+                        <button class="btn-secondary" data-target="contact">
+                            <i class="fas fa-envelope"></i> ESTABLISH CONTACT
+                        </button>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="tactical-display">
+                        <div class="radar-container" id="radar-container">
+                            <div class="radar-grid">
+                                <div class="radar-circle"></div>
+                                <div class="radar-circle"></div>
+                                <div class="radar-circle"></div>
+                            </div>
+                            <div class="radar-sweep"></div>
+                            <div class="radar-center"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="section-header">
+                <h2><i class="fas fa-user-secret"></i> OPERATIVE INTEL</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="card-header">
+                        <i class="fas fa-id-badge"></i>
+                        <h3>PROFILE</h3>
+                    </div>
+                    <div class="profile-info" id="profile-info">
+                        <!-- Dynamic content will be loaded here -->
+                    </div>
+                </div>
+                <div class="about-card">
+                    <div class="card-header">
+                        <i class="fas fa-trophy"></i>
+                        <h3>ACHIEVEMENTS</h3>
+                    </div>
+                    <div class="achievements" id="achievements">
+                        <!-- Dynamic content will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Arsenal Section (Skills + Certifications) -->
+        <section id="arsenal" class="section">
+            <div class="section-header">
+                <h2><i class="fas fa-cogs"></i> TACTICAL ARSENAL</h2>
+                <div class="section-line"></div>
+            </div>
+            
+            <!-- Skills Subsection -->
+            <div class="arsenal-subsection">
+                <div class="subsection-header">
+                    <h3><i class="fas fa-tools"></i> TECHNICAL SKILLS</h3>
+                </div>
+                <div class="skills-grid" id="skills-grid">
+                    <!-- Dynamic skills will be loaded here -->
+                </div>
+            </div>
+            
+            <!-- Certifications Subsection -->
+            <div class="arsenal-subsection">
+                <div class="subsection-header">
+                    <h3><i class="fas fa-certificate"></i> CREDENTIALS & CERTIFICATIONS</h3>
+                </div>
+                <div class="certifications-grid" id="certifications-content">
+                    <!-- Content will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section">
+            <div class="section-header">
+                <h2><i class="fas fa-rocket"></i> MISSION REPORTS</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="projects-filter">
+                <button class="filter-btn active" data-filter="all">ALL MISSIONS</button>
+                <button class="filter-btn" data-filter="bi">BI OPERATIONS</button>
+                <button class="filter-btn" data-filter="automation">AUTOMATION</button>
+                <button class="filter-btn" data-filter="python">PYTHON OPS</button>
+            </div>
+            <div class="projects-grid" id="projects-grid">
+                <!-- Dynamic projects will be loaded here -->
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="section">
+            <div class="section-header">
+                <h2><i class="fas fa-medal"></i> CAMPAIGN HISTORY</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="timeline" id="experience-timeline">
+                <!-- Dynamic experience will be loaded here -->
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <div class="section-header">
+                <h2><i class="fas fa-satellite-dish"></i> ESTABLISH COMMS</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>LOCATION</h3>
+                        <p>San José, Costa Rica</p>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fas fa-envelope"></i>
+                        <h3>EMAIL</h3>
+                        <p>contact@josesirias.com</p>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fab fa-linkedin"></i>
+                        <h3>LINKEDIN</h3>
+                        <p>linkedin.com/in/josesmonge</p>
+                    </div>
+                </div>
+                <form class="contact-form" id="contact-form">
+                    <h3>SEND MESSAGE</h3>
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <select required>
+                        <option value="">Select Mission Type</option>
+                        <option value="collaboration">Collaboration</option>
+                        <option value="project">Project Inquiry</option>
+                        <option value="consultation">Consultation</option>
+                    </select>
+                    <textarea placeholder="Message Details" required></textarea>
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-paper-plane"></i> TRANSMIT
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Admin Section -->
+        <section id="admin" class="section">
+            <div class="section-header">
+                <h2>ADMIN CONTROL PANEL by JC</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="admin-login" id="admin-login">
+                <div class="security-notice">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>RESTRICTED ACCESS AREA</span>
+                </div>
+                <div class="login-form">
+                    <div class="security-badge">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>SECURITY CLEARANCE REQUIRED</h3>
+                    <div class="access-level">
+                        <span>CLEARANCE LEVEL: </span>
+                        <span class="level-classified">CLASSIFIED</span>
+                    </div>
+                    <input type="password" id="admin-password" placeholder="Enter Access Code">
+                    <button onclick="adminLogin()" class="btn-primary">
+                        <i class="fas fa-unlock"></i> AUTHENTICATE
+                    </button>
+                    <div class="security-footer">
+                        <small><i class="fas fa-lock"></i> All access attempts are logged and monitored</small>
+                    </div>
+                </div>
+            </div>
+            <div class="admin-panel" id="admin-panel" style="display: none;">
+                <div class="admin-tabs">
+                    <button class="tab-btn active" data-tab="profile"><i class="fas fa-user"></i> Profile</button>
+                    <button class="tab-btn" data-tab="projects"><i class="fas fa-rocket"></i> Projects</button>
+                    <button class="tab-btn" data-tab="experience"><i class="fas fa-medal"></i> Experience</button>
+                    <button class="tab-btn" data-tab="skills"><i class="fas fa-cogs"></i> Skills</button>
+                    <button class="tab-btn" data-tab="achievements"><i class="fas fa-trophy"></i> Achievements</button>
+                    <button class="tab-btn" data-tab="certifications"><i class="fas fa-certificate"></i> Certifications</button>
+                    <button class="tab-btn" data-tab="themes"><i class="fas fa-palette"></i> Themes</button>
+                    <button class="tab-btn" data-tab="export"><i class="fas fa-download"></i> Export/Import</button>
+                </div>
+                <div class="admin-controls">
+                    <button class="btn-save-all" onclick="saveDataAndUpdate()">
+                        <i class="fas fa-save"></i> Save All Changes & Update Page
+                    </button>
+                </div>
+                <div class="admin-content" id="admin-content">
+                    <!-- Admin forms will be loaded here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/admin.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

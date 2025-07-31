@@ -1,0 +1,92 @@
+# **CV — José Sirias Monge**
+
+**Location:** San José / Desamparados, Costa Rica  
+**Experience:** ~3 years in BI and analytics
+
+---
+
+## 📝 Summary  
+Dynamic BI analyst focused on process improvement and digital transformation. Skilled at translating complex data into actionable insights to foster sustainable growth and collaboration across teams. Recognized for creating standardized workflows, mentoring across technical/non‑technical roles, and driving innovative solutions. Lifelong learner committed to continuous optimization.
+
+---
+
+## 🔍 Profile Overview
+
+| Area                                | Years / Level         |
+|-------------------------------------|------------------------|
+| Professional Experience             | ~3 years               |
+| Excel / Query / PowerPivot / VBA    | 3 years                |
+| Power BI                            | 3 years                |
+| Power Automate / Power Apps / SP    | 2 years                |
+| Project Management                  | 2 years                |
+| SQL / Python                        | Intermediate (~1 year) |
+
+---
+
+## 💼 Work Experience
+
+### **Cisco** — Recurrent Revenue Analyst CLO  
+**Jun 2023 – Present**  
+- Led BI initiatives to close organizational knowledge gaps and align reporting processes.  
+- Built quotation‑analysis Excel tool used by 100+ analysts for standardized data workflows.  
+- Developed advanced Excel/VBA models for automated revenue forecasting & analysis.  
+- Collaborated across teams to document processes, track KPIs, and recommend improvements. :contentReference[oaicite:1]{index=1}
+
+### **AR Holdings** — Business Intelligence Analyst  
+**Sep 2022 – May 2023**  
+- Designed Power BI dashboards aligned with strategic company goals.  
+- Automated weekly reporting for 85+ stores across 9 countries, saving ~96 hours/week.  
+- Enhanced data quality and KPI tracking infrastructure through cross-functional coordination. :contentReference[oaicite:2]{index=2}
+
+### **FIFCO** — Operations Control Analyst (OPI)  
+**Jul 2021 – Aug 2022**  
+- Spearheaded digital transformation using Excel, Power BI, and PowerPivot to cleanse and structure data.  
+- Mentored 15+ team members in SAP and Excel best practices.  
+- Implemented KPI monitoring and preventative process reviews leading to process optimization. :contentReference[oaicite:3]{index=3}
+
+---
+
+## 🎓 Education
+
+**Universidad Fidélitas**, San Pedro, Costa Rica  
+**Bachelor of Science in Industrial Engineering**, October 2022 :contentReference[oaicite:4]{index=4}
+
+---
+
+## 📜 Certifications & Training
+- PL‑900: Microsoft Power Platform Certification _(In Progress)_  
+- Master Power BI, Master Excel, SQL Intermediate/Master _(LinkedIn Learning)_  
+- Green Belt / Six Sigma – Kaizen _(LinkedIn Learning)_  
+- Agile Foundations, PM Foundations, Statistics, Driving Measurable Change, Leading Meetings _(LinkedIn Learning)_ :contentReference[oaicite:5]{index=5}
+
+---
+
+## 🛠 Technical Skills & Methodologies
+
+- **Tools & Technologies:** Power BI · Power Automate · Excel (VBA, PowerPivot) · SharePoint Lists/Queries · SQL (Intermediate) · Python (Intermediate) · DAX  
+- **Methodologies & Focus Areas:** Design Thinking · Storytelling · Agile/Scrum · Process Standardization · Data Quality · Collaboration & Mentoring :contentReference[oaicite:6]{index=6}
+
+---
+
+## 🌐 Languages
+
+- Spanish (Native)  
+- English (Advanced – C1) :contentReference[oaicite:7]{index=7}
+
+---
+
+## 🏆 Key Accomplishment: Quoting Analysis Tool (Cisco)  
+Developed an automated Excel + VBA tool for multi-dimensional quote analysis—drawing data from Salesforce and SAP HANA. The solution standardized workflows across 100+ users and significantly improved transparency in compensation processes. Recognized company‑wide for bridging data gaps and supporting operational clarity across Life Cycle teams. :contentReference[oaicite:8]{index=8}
+
+---
+
+## 📞 Contact & Profiles
+
+- **LinkedIn:** [linkedin.com/in/josesmonge](https://www.linkedin.com/in/josesmonge/)  
+- **Bold.pro:** [sj.bold.pro/my/josesirias‑monge](https://sj.bold.pro/my/josesirias-monge) :contentReference[oaicite:9]{index=9}  
+- **GitHub:** `github.com/josesirias-monge` *(please verify)*  
+- **Email:** *(please insert your email address)*
+
+---
+
+*End of CV — José Sirias Monge*
