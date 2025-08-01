@@ -77,7 +77,7 @@ Dynamic BI analyst focused on process improvement and digital transformation. Sk
 
 ## 🔐 **ADMIN ACCESS**
 
-- **Access Code**: `tactical2025`
+- **Access Code**: Contact for credentials
 - **Security Features**:
   - Enterprise-grade SHA-256 authentication
   - Rate limiting (3 attempts, 5-minute lockout)
