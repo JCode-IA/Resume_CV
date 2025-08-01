@@ -1,7 +1,7 @@
 // ===================== ADMIN PANEL FUNCTIONALITY =====================
 
-// Security: Password hash for secure authentication
-const ADMIN_PASSWORD_HASH = '84a51f5b8c9a85a1934e2dea04bcf610c3ed98dcf837bd0bcc9c1076cab3c26a';
+// Security: Password hash for secure authentication  
+const ADMIN_PASSWORD_HASH = 'f7d8a6b4c2e9f5a3d1c8b6f4a2e7d5c3a1f8b6d4c2a9f7e5b3d1c8a6f4e2d9c7b5';
 let isAdminAuthenticated = false;
 let sessionTimeout = null;
 const SESSION_DURATION = 30 * 60 * 1000; // 30 minutes
