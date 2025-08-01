@@ -38,13 +38,44 @@ function initNavigation() {
             // Update active nav link
             navLinks.forEach(l => l.classList.remove('active'));
             link.classList.add('active');
+            
+            // Close mobile menu after navigation
+            if (navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                hamburger.classList.remove('active');
+                document.body.classList.remove('mobile-menu-open');
+            }
         });
     });
     
-    // Hamburger menu
-    hamburger.addEventListener('click', () => {
+    // Hamburger menu toggle
+    hamburger.addEventListener('click', (e) => {
+        e.stopPropagation();
         navMenu.classList.toggle('active');
         hamburger.classList.toggle('active');
+        
+        // Toggle body overlay for mobile menu
+        document.body.classList.toggle('mobile-menu-open', navMenu.classList.contains('active'));
+    });
+    
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (navMenu.classList.contains('active') && 
+            !navMenu.contains(e.target) && 
+            !hamburger.contains(e.target)) {
+            navMenu.classList.remove('active');
+            hamburger.classList.remove('active');
+            document.body.classList.remove('mobile-menu-open');
+        }
+    });
+    
+    // Close mobile menu on escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+            navMenu.classList.remove('active');
+            hamburger.classList.remove('active');
+            document.body.classList.remove('mobile-menu-open');
+        }
     });
     
     // Admin tab functionality
