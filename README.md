@@ -7,6 +7,92 @@ A Black Ops/GTA 6 inspired interactive portfolio website showcasing Business Int
 
 ---
 
+## � **ABOUT JOSÉ SIRIAS**
+
+**Location**: San José, Costa Rica  
+**Experience**: ~3 years in BI and Analytics  
+**Focus**: Business Intelligence, Data Analytics, Process Improvement, Digital Transformation
+
+### 🎯 **Professional Summary**
+Dynamic BI analyst focused on process improvement and digital transformation. Skilled at translating complex data into actionable insights to foster sustainable growth and collaboration across teams. Recognized for creating standardized workflows, mentoring across technical/non-technical roles, and driving innovative solutions.
+
+### 💼 **Current Role**
+**Cisco** - Recurrent Revenue Analyst CLO (Jun 2023 – Present)
+- Leading BI initiatives to close organizational knowledge gaps
+- Built quotation-analysis Excel tool used by 100+ analysts
+- Developing advanced Excel/VBA models for automated revenue forecasting
+
+---
+
+## 🚀 **PORTFOLIO FEATURES**
+
+### **🎮 Gaming-Inspired Design**
+- **Dark Tactical Theme**: Military-style UI with neon accents
+- **Interactive Elements**: Animated radar displays, glitch effects, tactical loading screens
+- **Immersive Experience**: Black Ops/GTA 6 inspired interface design
+- **Responsive Design**: Optimized for desktop and mobile devices
+
+### **🛡️ Secure Admin Panel**
+- **Enterprise-Grade Security**: SHA-256 hash authentication
+- **Rate Limiting**: Protection against brute force attacks
+- **Session Management**: Automatic security timeout
+- **Input Sanitization**: XSS protection on all admin inputs
+- **Real-time Updates**: Changes reflect immediately across portfolio
+
+### **📊 Professional Sections**
+
+1. **HQ (Home)**: Hero section with tactical display and key metrics
+2. **INTEL (About)**: Professional profile and achievements
+3. **ARSENAL (Skills)**: Technical skills with animated progress bars
+4. **MISSIONS (Projects)**: Portfolio projects with filtering capabilities
+5. **CAMPAIGNS (Experience)**: Professional timeline and accomplishments
+6. **COMMS (Contact)**: Contact information and professional links
+7. **ADMIN**: Secure content management panel
+
+---
+
+## � **TECHNOLOGY STACK**
+
+### **Frontend Technologies**
+- **Core**: HTML5, CSS3, JavaScript (ES6+)
+- **Styling**: CSS Grid, Flexbox, CSS Variables, CSS Animations
+- **Icons**: Font Awesome 6 (military and tech icons)
+- **Fonts**: Orbitron (tactical), Rajdhani (modern)
+- **Storage**: localStorage for data persistence
+
+### **Security Implementation**
+- **Authentication**: SHA-256 hashing with Web Crypto API
+- **Session Control**: Automatic timeout and logout functionality
+- **Rate Limiting**: Brute force protection with cooldown periods
+- **Input Validation**: XSS protection and sanitization
+- **Secure Storage**: Hash-only storage, no plain text credentials
+
+### **Hosting & Deployment**
+- **Platform**: GitHub Pages (static hosting)
+- **Domain**: Custom GitHub Pages URL
+- **SSL**: Automatic HTTPS encryption
+- **CDN**: GitHub's global content delivery network
+
+---
+
+## 🔐 **ADMIN ACCESS**
+
+- **Access Code**: `tactical2025`
+- **Security Features**:
+  - Enterprise-grade SHA-256 authentication
+  - Rate limiting (3 attempts, 5-minute lockout)
+  - 30-minute session timeout
+  - XSS protection on all inputs
+- **Management Features**:
+  - Update profile information
+  - Add/edit/delete projects
+  - Manage experience timeline
+  - Modify skills and proficiency levels
+  - Real-time content updates
+  - Data export/import functionality
+
+---
+
 ## 📋 **ABOUT JOSÉ SIRIAS**
 
 **Location**: San José, Costa Rica  
