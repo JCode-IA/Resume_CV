@@ -1,9 +1,50 @@
 // ===================== ADMIN PANEL FUNCTIONALITY =====================
 
-// Admin authentication
-const ADMIN_PASSWORD = 'tactical2025';
+// Security: Password hash for secure authentication
+const ADMIN_PASSWORD_HASH = '84a51f5b8c9a85a1934e2dea04bcf610c3ed98dcf837bd0bcc9c1076cab3c26a';
 let isAdminAuthenticated = false;
+let sessionTimeout = null;
+const SESSION_DURATION = 30 * 60 * 1000; // 30 minutes
 let currentTheme = localStorage.getItem('portfolioTheme') || 'tactical-green';
+
+// Security: Simple SHA-256 hash function
+async function hashPassword(password) {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(password);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+// Security: Session management
+function startSession() {
+    clearTimeout(sessionTimeout);
+    sessionTimeout = setTimeout(() => {
+        adminLogout();
+        showNotification('Session expired for security. Please login again.', 'warning');
+    }, SESSION_DURATION);
+}
+
+function adminLogout() {
+    isAdminAuthenticated = false;
+    clearTimeout(sessionTimeout);
+    sessionTimeout = null;
+    document.getElementById('admin-login').style.display = 'block';
+    document.getElementById('admin-panel').style.display = 'none';
+    showNotification('Logged out successfully.', 'info');
+}
+
+// Security: Input sanitization
+function sanitizeInput(input) {
+    if (typeof input !== 'string') return input;
+    return input
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#x27;')
+        .replace(/\//g, '&#x2F;');
+}
 
 // ===================== ICON PICKER FUNCTIONALITY =====================
 
@@ -406,22 +447,47 @@ function updateMainPortfolioDisplay() {
     }
 }
 
-// Authentication function
-function adminLogin() {
+// Authentication function with security improvements
+async function adminLogin() {
     const passwordInput = document.getElementById('admin-password');
     const password = passwordInput.value;
     
-    if (password === ADMIN_PASSWORD) {
-        isAdminAuthenticated = true;
-        document.getElementById('admin-login').style.display = 'none';
-        document.getElementById('admin-panel').style.display = 'block';
-        showAdminTab('profile');
-        showNotification('Authentication successful! Welcome to Admin Control Panel.', 'success');
-        passwordInput.value = '';
-    } else {
-        showNotification('Access denied! Invalid security clearance.', 'error');
-        passwordInput.value = '';
-        passwordInput.focus();
+    // Security: Rate limiting
+    if (adminLogin.attempts && adminLogin.attempts >= 3) {
+        const now = Date.now();
+        if (now - adminLogin.lastAttempt < 300000) { // 5 minutes
+            showNotification('Too many failed attempts. Please wait 5 minutes.', 'error');
+            return;
+        } else {
+            adminLogin.attempts = 0; // Reset after cooldown
+        }
+    }
+    
+    try {
+        const hashedPassword = await hashPassword(password);
+        
+        if (hashedPassword === ADMIN_PASSWORD_HASH) {
+            isAdminAuthenticated = true;
+            adminLogin.attempts = 0; // Reset attempts on success
+            startSession(); // Start session timer
+            
+            document.getElementById('admin-login').style.display = 'none';
+            document.getElementById('admin-panel').style.display = 'block';
+            showAdminTab('profile');
+            showNotification('Authentication successful! Welcome to Admin Control Panel.', 'success');
+            passwordInput.value = '';
+        } else {
+            // Security: Track failed attempts
+            adminLogin.attempts = (adminLogin.attempts || 0) + 1;
+            adminLogin.lastAttempt = Date.now();
+            
+            showNotification(`Access denied! Invalid security clearance. (${adminLogin.attempts}/3)`, 'error');
+            passwordInput.value = '';
+            passwordInput.focus();
+        }
+    } catch (error) {
+        console.error('Authentication error:', error);
+        showNotification('Authentication system error. Please try again.', 'error');
     }
 }
 
@@ -457,9 +523,28 @@ function initializeAdminTabs() {
     initializeDragAndDrop();
 }
 
+// Security: Authentication middleware
+function requireAuth(callback) {
+    return function(...args) {
+        if (!isAdminAuthenticated) {
+            showNotification('Unauthorized access attempt blocked.', 'error');
+            return false;
+        }
+        // Extend session on any admin activity
+        startSession();
+        return callback.apply(this, args);
+    };
+}
+
 // Show admin tab
 function showAdminTab(tabName) {
-    if (!isAdminAuthenticated) return;
+    if (!isAdminAuthenticated) {
+        showNotification('Unauthorized access attempt blocked.', 'error');
+        return;
+    }
+    
+    // Extend session on activity
+    startSession();
     
     // Update active tab
     document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
@@ -1605,30 +1690,39 @@ function applyTheme(themeName) {
     }
 }
 
-// Save Profile
+// Save Profile with security improvements
 function saveProfile(e) {
     e.preventDefault();
     
-    // Basic Profile Information
-    portfolioData.profile.name = document.getElementById('profile-name').value;
-    portfolioData.profile.title = document.getElementById('profile-title').value;
-    portfolioData.profile.location = document.getElementById('profile-location').value;
-    portfolioData.profile.email = document.getElementById('profile-email').value;
+    // Security: Check authentication
+    if (!isAdminAuthenticated) {
+        showNotification('Unauthorized access attempt blocked.', 'error');
+        return;
+    }
+    
+    // Security: Extend session on activity
+    startSession();
+    
+    // Security: Sanitize all inputs
+    portfolioData.profile.name = sanitizeInput(document.getElementById('profile-name').value);
+    portfolioData.profile.title = sanitizeInput(document.getElementById('profile-title').value);
+    portfolioData.profile.location = sanitizeInput(document.getElementById('profile-location').value);
+    portfolioData.profile.email = sanitizeInput(document.getElementById('profile-email').value);
     
     // Bio/Summary (handle both legacy 'bio' and new 'summary')
-    const bioValue = document.getElementById('profile-bio').value;
+    const bioValue = sanitizeInput(document.getElementById('profile-bio').value);
     portfolioData.profile.summary = bioValue;
     portfolioData.profile.bio = bioValue; // Keep for compatibility
     
     // Experience
-    const experience = document.getElementById('profile-experience').value;
+    const experience = sanitizeInput(document.getElementById('profile-experience').value);
     if (experience) portfolioData.profile.experience = experience;
     
     // Contact Information
-    const phone = document.getElementById('profile-phone').value;
+    const phone = sanitizeInput(document.getElementById('profile-phone').value);
     if (phone) portfolioData.profile.phone = phone;
     
-    const linkedin = document.getElementById('profile-linkedin').value;
+    const linkedin = sanitizeInput(document.getElementById('profile-linkedin').value);
     if (linkedin) portfolioData.profile.linkedin = linkedin;
     
     const github = document.getElementById('profile-github').value;
@@ -1694,36 +1788,8 @@ function importData() {
     reader.readAsText(file);
 }
 
-// Notification system
-function showNotification(message, type = 'info') {
-    const notification = document.createElement('div');
-    notification.className = `notification ${type}`;
-    notification.innerHTML = `
-        <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i>
-        ${message}
-    `;
-    
-    notification.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background: var(--bg-secondary);
-        color: var(--text-primary);
-        padding: 1rem 1.5rem;
-        border-radius: 10px;
-        border: 2px solid ${type === 'success' ? 'var(--primary-color)' : type === 'error' ? '#ff4757' : 'var(--accent-color)'};
-        z-index: 10000;
-        animation: slideIn 0.3s ease-out;
-        font-family: var(--font-secondary);
-        font-weight: 600;
-    `;
-    
-    document.body.appendChild(notification);
-    
-    setTimeout(() => {
-        notification.style.animation = 'slideOut 0.3s ease-out';
-        setTimeout(() => notification.remove(), 300);
-    }, 3000);
+function initializeAdminData() {
+    loadData();
 }
 
 // Save data to localStorage

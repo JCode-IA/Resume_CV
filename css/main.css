@@ -806,14 +806,13 @@ body {
     align-items: center;
     margin-bottom: 2rem;
     padding-bottom: 1rem;
-    border-bottom: 2px solid var(--accent-color);
 }
 
 .subsection-header h3 {
     font-family: 'Orbitron', monospace;
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--accent-color);
+    color: #ffffff;
     text-transform: uppercase;
     letter-spacing: 2px;
     margin: 0;
@@ -824,7 +823,7 @@ body {
 
 .subsection-header i {
     font-size: 1.2rem;
-    color: var(--accent-color);
+    color: var(--primary-color);
 }
 
 /* Skills Grid */
@@ -904,10 +903,14 @@ body {
 }
 
 .skill-name span:last-child {
-    color: var(--accent-color);
+    color: #ffffff;
     font-family: 'Orbitron', monospace;
     font-size: 0.9rem;
     font-weight: 700;
+    background: var(--bg-tertiary);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
 }
 
 .progress-bar {
@@ -919,10 +922,15 @@ body {
 
 .progress-fill {
     height: 100%;
-    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    background: var(--primary-color);
     border-radius: 4px;
-    transition: width 2s ease;
+    width: 0%;
+    transition: width 2.5s ease-out;
     position: relative;
+}
+
+.progress-fill.animate {
+    transition-delay: 0.3s;
 }
 
 .progress-fill::after {
@@ -930,10 +938,9 @@ body {
     position: absolute;
     top: 0;
     right: 0;
-    width: 20px;
+    width: 10px;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3));
-    animation: progress-shine 2s infinite;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2));
 }
 
 @keyframes progress-shine {
@@ -976,7 +983,7 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 2rem;
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
 }
 
@@ -1008,7 +1015,7 @@ body {
 .project-image i {
     font-size: 4rem;
     color: var(--primary-color);
-    text-shadow: var(--shadow-glow);
+    text-shadow: 0 0 8px rgba(0, 255, 136, 0.1);
 }
 
 .project-content {
@@ -1066,7 +1073,7 @@ body {
 
 /* Timeline */
 .timeline {
-    max-width: 800px;
+    max-width: 1400px;
     margin: 0 auto;
     position: relative;
 }
@@ -1187,6 +1194,85 @@ body {
     font-family: var(--font-primary);
     color: var(--text-primary);
     margin-bottom: 0.5rem;
+}
+
+/* Costa Rica Location Card Styling */
+.location-card {
+    position: relative;
+    overflow: visible;
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.location-visual {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.location-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1;
+}
+
+.location-content i {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.location-content h3 {
+    font-family: var(--font-primary);
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.location-content p {
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.costa-rica-map {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+    transition: all 0.3s ease;
+}
+
+.costa-rica-flag {
+    width: 80px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    transition: all 0.3s ease;
+}
+
+.location-card:hover .costa-rica-map {
+    transform: scale(1.05);
+}
+
+.location-card:hover .costa-rica-flag {
+    transform: scale(1.03);
+}
+
+/* Contact card links styling */
+.contact-card a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-card a:hover {
+    color: var(--primary-color);
 }
 
 .contact-form {
@@ -1490,6 +1576,44 @@ body {
     margin: 0 auto;
 }
 
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding: 1rem 2rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--primary-color);
+    border-radius: 10px;
+    box-shadow: var(--shadow-glow);
+}
+
+.admin-header h3 {
+    font-family: var(--font-primary);
+    color: var(--primary-color);
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.logout-btn {
+    padding: 0.5rem 1rem;
+    background: var(--danger-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: var(--font-secondary);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.logout-btn:hover {
+    background: #ff3838;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(255, 71, 87, 0.3);
+}
+
 .admin-tabs {
     display: flex;
     justify-content: center;
@@ -1527,9 +1651,9 @@ body {
 /* About Section */
 .about-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    max-width: 1200px;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 1rem;
+    max-width: 1300px;
     margin: 0 auto;
     align-items: start;
 }
@@ -1589,13 +1713,25 @@ body {
     border: 1px solid rgba(0, 255, 255, 0.1);
     transition: all 0.3s ease;
     cursor: pointer;
+    transform: translateZ(0) translateX(0);
+    -webkit-transform: translateZ(0) translateX(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    will-change: transform;
 }
 
 .achievement-item:hover {
     background: rgba(0, 255, 255, 0.1);
     border-color: var(--primary-color);
-    transform: translateX(5px);
+    transform: translateZ(0) translateX(5px);
     box-shadow: 0 4px 15px rgba(0, 255, 255, 0.2);
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .achievement-icon {
@@ -1603,12 +1739,24 @@ body {
     font-size: 1.5rem;
     margin-top: 0.5rem;
     transition: all 0.3s ease;
+    transform: translateZ(0) scale(1);
+    -webkit-transform: translateZ(0) scale(1);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    will-change: transform;
 }
 
 .achievement-item:hover .achievement-icon {
     color: var(--accent-color);
-    transform: scale(1.1);
+    transform: translateZ(0) scale(1.1);
     text-shadow: 0 0 10px var(--accent-color);
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .achievement-content h5 {
@@ -1705,6 +1853,13 @@ body {
     overflow: hidden;
     border: 2px solid var(--border-color);
     transition: all 0.3s ease;
+    transform: translateZ(0) scale(1);
+    -webkit-transform: translateZ(0) scale(1);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    will-change: transform;
 }
 
 .profile-picture:hover {
@@ -1712,7 +1867,12 @@ body {
     box-shadow: 
         0 0 20px rgba(0, 255, 255, 0.3),
         inset 0 0 20px rgba(0, 255, 255, 0.1);
-    transform: scale(1.05);
+    transform: translateZ(0) scale(1.05);
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .profile-picture img {
@@ -1720,10 +1880,22 @@ body {
     height: 100%;
     object-fit: cover;
     transition: all 0.3s ease;
+    transform: translateZ(0) scale(1);
+    -webkit-transform: translateZ(0) scale(1);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    will-change: transform;
 }
 
 .profile-picture:hover img {
-    transform: scale(1.1);
+    transform: translateZ(0) scale(1.1);
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .picture-border {
@@ -1763,12 +1935,24 @@ body {
     border: 1px solid rgba(0, 255, 255, 0.1);
     border-radius: 10px;
     transition: all 0.3s ease;
+    transform: translateZ(0) translateX(0);
+    -webkit-transform: translateZ(0) translateX(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    will-change: transform;
 }
 
 .profile-item:hover {
     background: rgba(0, 255, 255, 0.1);
     border-color: var(--primary-color);
-    transform: translateX(5px);
+    transform: translateZ(0) translateX(5px);
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .profile-item i {
@@ -2948,9 +3132,11 @@ body {
 /* Certifications Section Styles */
 .certifications-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
     margin-top: 2rem;
+    max-width: 1400px;
+    margin: 2rem auto 0 auto;
 }
 
 .certification-card {
@@ -2975,8 +3161,8 @@ body {
 
 .certification-card:hover {
     border-color: #FFD700;
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.1);
 }
 
 .certification-card .cert-icon {
@@ -2988,7 +3174,7 @@ body {
     align-items: center;
     justify-content: center;
     margin-bottom: 1.5rem;
-    box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+    box-shadow: 0 2px 8px rgba(255, 215, 0, 0.2);
 }
 
 .certification-card .cert-icon i {
@@ -3136,4 +3322,3 @@ body {
         letter-spacing: 1px;
     }
 }
-

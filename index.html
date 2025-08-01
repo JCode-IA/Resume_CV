@@ -193,20 +193,26 @@
             </div>
             <div class="contact-grid">
                 <div class="contact-info">
-                    <div class="contact-card">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <h3>LOCATION</h3>
-                        <p>San José, Costa Rica</p>
+                    <div class="contact-card location-card">
+                        <div class="location-visual">
+                            <div class="location-content">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <h3>LOCATION</h3>
+                                <p>San José, Costa Rica</p>
+                            </div>
+                            <img src="costa_rica_map.png" alt="Costa Rica Map" class="costa-rica-map">
+                            <img src="costa_rica_logo.png" alt="Costa Rica Flag" class="costa-rica-flag">
+                        </div>
                     </div>
                     <div class="contact-card">
-                        <i class="fas fa-envelope"></i>
-                        <h3>EMAIL</h3>
-                        <p>contact@josesirias.com</p>
+                        <i class="fab fa-github"></i>
+                        <h3>GITHUB</h3>
+                        <p><a href="https://github.com/josesirias-monge" target="_blank">github.com/josesirias-monge</a></p>
                     </div>
                     <div class="contact-card">
                         <i class="fab fa-linkedin"></i>
                         <h3>LINKEDIN</h3>
-                        <p>linkedin.com/in/josesmonge</p>
+                        <p><a href="https://linkedin.com/in/josesmonge" target="_blank">linkedin.com/in/josesmonge</a></p>
                     </div>
                 </div>
                 <form class="contact-form" id="contact-form">
@@ -257,6 +263,12 @@
                 </div>
             </div>
             <div class="admin-panel" id="admin-panel" style="display: none;">
+                <div class="admin-header">
+                    <h3><i class="fas fa-shield-alt"></i> ADMIN CONTROL PANEL</h3>
+                    <button class="logout-btn" onclick="adminLogout()">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </div>
                 <div class="admin-tabs">
                     <button class="tab-btn active" data-tab="profile"><i class="fas fa-user"></i> Profile</button>
                     <button class="tab-btn" data-tab="projects"><i class="fas fa-rocket"></i> Projects</button>

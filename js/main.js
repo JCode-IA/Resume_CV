@@ -59,6 +59,8 @@ function initNavigation() {
 }
 
 function showSection(sectionId) {
+    console.log(`[DEBUG] Switching to section: ${sectionId}`);
+    
     // Hide all sections
     document.querySelectorAll('.section').forEach(section => {
         section.classList.remove('active');
@@ -69,6 +71,26 @@ function showSection(sectionId) {
     if (targetSection) {
         targetSection.classList.add('active');
         
+        console.log(`[DEBUG] Section ${sectionId} made active`);
+        console.log(`[DEBUG] Current scroll position before: ${window.scrollY}`);
+        
+        // Simple approach: scroll to top of page since sections are full height
+        setTimeout(() => {
+            window.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: 'smooth'
+            });
+            
+            console.log(`[DEBUG] Scrolled to top`);
+            
+            // Verify the scroll after a delay
+            setTimeout(() => {
+                console.log(`[DEBUG] Final scroll position: ${window.scrollY}`);
+            }, 600);
+            
+        }, 10); // Short delay to ensure section is visible
+        
         // Trigger animations for the section
         triggerSectionAnimations(sectionId);
     }
@@ -77,6 +99,7 @@ function showSection(sectionId) {
 function triggerSectionAnimations(sectionId) {
     switch(sectionId) {
         case 'skills':
+        case 'arsenal':
             animateProgressBars();
             break;
         case 'projects':
@@ -89,12 +112,22 @@ function triggerSectionAnimations(sectionId) {
 }
 
 function animateProgressBars() {
+    // Reset all progress bars to 0 first
+    document.querySelectorAll('.progress-fill').forEach(bar => {
+        bar.style.width = '0%';
+        bar.classList.remove('animate');
+    });
+    
+    // Animate them with staggered timing
     setTimeout(() => {
-        document.querySelectorAll('.progress-fill').forEach(bar => {
-            const width = bar.getAttribute('data-width');
-            bar.style.width = width + '%';
+        document.querySelectorAll('.progress-fill').forEach((bar, index) => {
+            setTimeout(() => {
+                const width = bar.getAttribute('data-width');
+                bar.classList.add('animate');
+                bar.style.width = width + '%';
+            }, index * 150); // Stagger animation by 150ms per bar
         });
-    }, 300);
+    }, 500); // Wait 500ms before starting animations
 }
 
 function animateProjectCards() {
@@ -422,6 +455,22 @@ function initInteractiveElements() {
             showNotification('Message transmitted successfully! Awaiting response...', 'success');
             contactForm.reset();
         });
+    }
+    
+    // Initialize progress bar animations when arsenal section is visible
+    const arsenalSection = document.getElementById('arsenal');
+    if (arsenalSection) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        animateProgressBars();
+                    }, 200);
+                }
+            });
+        }, { threshold: 0.3 });
+        
+        observer.observe(arsenalSection);
     }
     
     // Initialize enhanced radar
