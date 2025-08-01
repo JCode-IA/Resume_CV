@@ -1,28 +1,9 @@
 # José Sirias Monge - BI Analyst Portfolio
 ## 🎮 TACTICAL HQ - Interactive Portfolio
 
-A Black Ops/GTA 6 inspired interactive portfolio website showcasing Business Intelligence expertise with secure content management and professional presentation.
+A navi / Intel inspired interactive portfolio website showcasing Business Intelligence expertise with secure content management and professional presentation.
 
 **🌐 Live Site**: [https://jcode-ia.github.io/Resume_CV/](https://jcode-ia.github.io/Resume_CV/)
-
----
-
-## � **ABOUT JOSÉ SIRIAS**
-
-**Location**: San José, Costa Rica  
-**Experience**: ~3 years in BI and Analytics  
-**Focus**: Business Intelligence, Data Analytics, Process Improvement, Digital Transformation
-
-### 🎯 **Professional Summary**
-Dynamic BI analyst focused on process improvement and digital transformation. Skilled at translating complex data into actionable insights to foster sustainable growth and collaboration across teams. Recognized for creating standardized workflows, mentoring across technical/non-technical roles, and driving innovative solutions.
-
-### 💼 **Current Role**
-**Cisco** - Recurrent Revenue Analyst CLO (Jun 2023 – Present)
-- Leading BI initiatives to close organizational knowledge gaps
-- Built quotation-analysis Excel tool used by 100+ analysts
-- Developing advanced Excel/VBA models for automated revenue forecasting
-
----
 
 ## 🚀 **PORTFOLIO FEATURES**
 
@@ -93,23 +74,6 @@ Dynamic BI analyst focused on process improvement and digital transformation. Sk
 
 ---
 
-## 📋 **ABOUT JOSÉ SIRIAS**
-
-**Location**: San José, Costa Rica  
-**Experience**: ~3 years in BI and Analytics  
-**Focus**: Business Intelligence, Data Analytics, Process Improvement, Digital Transformation
-
-### 🎯 **Professional Summary**
-Dynamic BI analyst focused on process improvement and digital transformation. Skilled at translating complex data into actionable insights to foster sustainable growth and collaboration across teams. Recognized for creating standardized workflows, mentoring across technical/non-technical roles, and driving innovative solutions.
-
-### 💼 **Current Role**
-**Cisco** - Recurrent Revenue Analyst CLO (Jun 2023 – Present)
-- Leading BI initiatives to close organizational knowledge gaps
-- Built quotation-analysis Excel tool used by 100+ analysts
-- Developing advanced Excel/VBA models for automated revenue forecasting
-
----
-
 ## 🚀 **PORTFOLIO FEATURES**
 
 ### **🎮 Gaming-Inspired Design**
@@ -160,67 +124,6 @@ Dynamic BI analyst focused on process improvement and digital transformation. Sk
 
 ---
 
-## 💼 **PROFESSIONAL EXPERIENCE**
-
-### **🏢 Cisco** - Recurrent Revenue Analyst CLO
-**Jun 2023 – Present**
-- Leading BI initiatives to close organizational knowledge gaps and align reporting processes
-- Built quotation-analysis Excel tool used by 100+ analysts for standardized data workflows
-- Developing advanced Excel/VBA models for automated revenue forecasting & analysis
-- Collaborating across teams to document processes, track KPIs, and recommend improvements
-
-### **🏢 AR Holdings** - Business Intelligence Analyst
-**Sep 2022 – May 2023**
-- Designed Power BI dashboards aligned with strategic company goals
-- Automated weekly reporting for 85+ stores across 9 countries, saving ~96 hours/week
-- Enhanced data quality and KPI tracking infrastructure through cross-functional coordination
-
-### **🏢 FIFCO** - Operations Control Analyst (OPI)
-**Jul 2021 – Aug 2022**
-- Spearheaded digital transformation using Excel, Power BI, and PowerPivot
-- Mentored 15+ team members in SAP and Excel best practices
-- Implemented KPI monitoring and preventative process reviews
-
----
-
-## 🎓 **EDUCATION & CERTIFICATIONS**
-
-### **Education**
-- **Bachelor of Science in Industrial Engineering**
-  - Universidad Fidélitas, San Pedro, Costa Rica (October 2022)
-
-### **Certifications**
-- **PL-900**: Microsoft Power Platform Certification *(In Progress)*
-- **Power BI Master**: Advanced dashboard development and DAX
-- **Excel Master**: VBA automation and PowerPivot mastery
-- **SQL Intermediate/Advanced**: Database management and queries
-- **Green Belt Six Sigma**: Process improvement and Kaizen methodologies
-- **Agile Foundations**: Project management and Scrum practices
-
----
-
-## 🛠 **TECHNICAL SKILLS**
-
-### **Business Intelligence & Analytics**
-- **Power BI**: Advanced dashboard development, DAX, data modeling
-- **Excel**: VBA automation, PowerPivot, advanced formulas, data analysis
-- **SQL**: Database querying, data extraction, performance optimization
-- **Python**: Data analysis, automation, reporting scripts
-
-### **Microsoft Power Platform**
-- **Power Automate**: Workflow automation and process optimization
-- **Power Apps**: Custom application development
-- **SharePoint**: Lists, queries, and collaboration tools
-
-### **Methodologies & Soft Skills**
-- **Design Thinking**: User-centered solution development
-- **Agile/Scrum**: Project management and iterative development
-- **Process Standardization**: Workflow optimization and documentation
-- **Data Storytelling**: Translating complex data into actionable insights
-- **Team Leadership**: Mentoring and cross-functional collaboration
-
----
-
 ## 🚀 **DEPLOYMENT & USAGE**
 
 ### **🌐 Live Deployment**
@@ -258,57 +161,6 @@ Dynamic BI analyst focused on process improvement and digital transformation. Sk
 - **Accessibility**: High contrast and clear typography
 
 ---
-
-## 📊 **KEY ACHIEVEMENTS**
-
-### **🏆 Cisco - Quoting Analysis Tool**
-Developed automated Excel + VBA tool for multi-dimensional quote analysis drawing data from Salesforce and SAP HANA. Standardized workflows across 100+ users and significantly improved transparency in compensation processes.
-
-### **🏆 AR Holdings - Multi-Country Automation**
-Automated weekly reporting for 85+ stores across 9 countries, saving approximately 96 hours per week in manual reporting time.
-
-### **🏆 FIFCO - Digital Transformation**
-Led digital transformation initiative mentoring 15+ team members and implementing KPI monitoring systems for process optimization.
-
----
-
-## 🌐 **LANGUAGES**
-- **Spanish**: Native proficiency
-- **English**: Advanced (C1 level)
-
----
-
-## 📞 **CONTACT & PROFESSIONAL LINKS**
-
-- **📧 Email**: contact@josesirias.com
-- **💼 LinkedIn**: [linkedin.com/in/josesmonge](https://www.linkedin.com/in/josesmonge/)
-- **📁 GitHub**: github.com/josesirias-monge
-- **🌐 Portfolio**: [https://jcode-ia.github.io/Resume_CV/](https://jcode-ia.github.io/Resume_CV/)
-
----
-
-## 🔧 **TECHNICAL IMPLEMENTATION**
-
-### **Security Features**
-- ✅ **Hash Authentication**: Enterprise-grade password encryption
-- ✅ **Rate Limiting**: Brute force attack protection
-- ✅ **Session Management**: Automatic timeout functionality
-- ✅ **Input Sanitization**: XSS protection on all admin inputs
-- ✅ **Secure Storage**: No plain text credentials stored
-
-### **Performance Optimization**
-- ✅ **Lightweight Code**: Optimized JavaScript and CSS
-- ✅ **CDN Resources**: Font Awesome and Google Fonts via CDN
-- ✅ **Responsive Images**: WebP format for optimal loading
-- ✅ **Efficient Animations**: CSS-based animations for smooth performance
-
-### **Browser Compatibility**
-- ✅ **Modern Browsers**: Chrome, Firefox, Safari, Edge
-- ✅ **Mobile Browsers**: iOS Safari, Chrome Mobile
-- ✅ **Fallback Support**: Graceful degradation for older browsers
-
----
-
 ## 📁 **PROJECT STRUCTURE**
 
 ```
@@ -324,26 +176,6 @@ Led digital transformation initiative mentoring 15+ team members and implementin
 ├── 📄 README.md               → This documentation
 └── 📄 CV.readme.txt           → CV information
 ```
-
----
-
-## 🚀 **DEPLOYMENT INSTRUCTIONS**
-
-### **GitHub Pages Setup**
-1. **Repository**: Push to `JCode-IA/Resume_CV`
-2. **Settings**: Go to Repository Settings → Pages
-3. **Source**: Select "Deploy from a branch"
-4. **Branch**: Choose `main` branch and `/ (root)` folder
-5. **Deploy**: Click Save and wait 2-3 minutes
-6. **Access**: Visit `https://jcode-ia.github.io/Resume_CV/`
-
-### **Local Development**
-1. **Clone**: `git clone https://github.com/JCode-IA/Resume_CV.git`
-2. **Open**: Open `index.html` in web browser
-3. **Serve**: Use local server for full functionality
-4. **Edit**: Admin panel allows real-time content updates
-
----
 
 ## 🎯 **PROJECT STATUS**
 

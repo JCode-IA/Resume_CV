@@ -859,17 +859,29 @@ function showExportTab(container) {
             <div class="section-header">
                 <div>
                     <h3><i class="fas fa-download"></i> Data Management</h3>
-                    <p>Export your portfolio data or import from backup</p>
+                    <p>Export your portfolio data or save changes permanently to data.js</p>
                 </div>
             </div>
             <div class="data-management-grid">
                 <div class="export-section">
-                    <h4><i class="fas fa-download"></i> Export Data</h4>
+                    <h4><i class="fas fa-download"></i> Export Portfolio Data</h4>
                     <p>Download your complete portfolio data as a JSON file for backup or transfer.</p>
                     <button class="btn-primary" onclick="exportData()">
-                        <i class="fas fa-download"></i> Export Portfolio
+                        <i class="fas fa-download"></i> Export JSON
                     </button>
                 </div>
+                
+                <div class="save-datajs-section">
+                    <h4><i class="fas fa-save"></i> Save to data.js File</h4>
+                    <p><strong>Make changes permanent!</strong> Download a new data.js file with all your changes, then replace the original file.</p>
+                    <button class="btn-success" onclick="saveToDataFile()">
+                        <i class="fas fa-file-code"></i> Generate data.js File
+                    </button>
+                    <small style="display: block; margin-top: 10px; color: var(--text-secondary);">
+                        ℹ️ After downloading, replace the existing /js/data.js file and commit to GitHub
+                    </small>
+                </div>
+                
                 <div class="import-section">
                     <h4><i class="fas fa-upload"></i> Import Data</h4>
                     <p>Import portfolio data from a previously exported JSON file.</p>
@@ -878,6 +890,25 @@ function showExportTab(container) {
                         <i class="fas fa-upload"></i> Import Portfolio
                     </button>
                 </div>
+                
+                <div class="reset-section">
+                    <h4><i class="fas fa-undo"></i> Reset Data</h4>
+                    <p>Reset to original data.js file content (removes all admin changes).</p>
+                    <button class="btn-warning" onclick="resetToOriginalData()">
+                        <i class="fas fa-undo"></i> Reset to Original
+                    </button>
+                </div>
+            </div>
+            
+            <div class="usage-instructions">
+                <h4><i class="fas fa-info-circle"></i> How to Make Changes Permanent</h4>
+                <ol>
+                    <li><strong>Make your changes</strong> in the admin panel (Profile, Projects, Skills, etc.)</li>
+                    <li><strong>Click "Generate data.js File"</strong> to download the updated file</li>
+                    <li><strong>Replace</strong> the existing <code>/js/data.js</code> file with the downloaded one</li>
+                    <li><strong>Commit and push</strong> the changes to GitHub</li>
+                    <li><strong>Your changes are now live!</strong> The portfolio will use the new data permanently</li>
+                </ol>
             </div>
         </div>
     `;
@@ -1764,6 +1795,36 @@ function exportData() {
     showNotification('Portfolio data exported successfully!', 'success');
 }
 
+// Save changes directly to data.js file for permanent changes
+function saveToDataFile() {
+    // Generate the new data.js file content
+    const dataJsContent = `// Portfolio Data Structure
+let portfolioData = ${JSON.stringify(portfolioData, null, 4)};`;
+    
+    // Create and download the file
+    const dataBlob = new Blob([dataJsContent], {type: 'application/javascript'});
+    const url = URL.createObjectURL(dataBlob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'data.js';
+    link.click();
+    URL.revokeObjectURL(url);
+    
+    showNotification('data.js file generated! Replace the original file and push to GitHub.', 'success');
+}
+
+// Function to generate a complete data.js file with current changes
+function generateDataJsFile() {
+    // Ensure order integrity before generating file
+    ensureOrderIntegrity();
+    
+    // Generate proper JavaScript file content
+    const dataJsContent = `// Portfolio Data Structure
+let portfolioData = ${JSON.stringify(portfolioData, null, 4)};`;
+    
+    return dataJsContent;
+}
+
 function importData() {
     const file = document.getElementById('import-file').files[0];
     if (!file) return;
@@ -1786,6 +1847,16 @@ function importData() {
         }
     };
     reader.readAsText(file);
+}
+
+// Reset to original data from data.js file
+function resetToOriginalData() {
+    if (confirm('This will remove ALL admin changes and reset to the original data.js content. Are you sure?')) {
+        // Clear localStorage to force reload from original data.js
+        localStorage.removeItem('portfolioData');
+        showNotification('Data reset! Refreshing page to load original data...', 'info');
+        setTimeout(() => location.reload(), 2000);
+    }
 }
 
 function initializeAdminData() {
@@ -2284,9 +2355,57 @@ function saveDataAndUpdate() {
             updateCertificationsSection();
         }
         
-        // Show success notification
-        showNotification('All changes saved and page updated successfully!', 'success');
+        // Show success notification with option to make permanent
+        showSaveNotificationWithOptions();
     }, 200);
+}
+
+// Enhanced save notification with option to generate data.js
+function showSaveNotificationWithOptions() {
+    const notification = document.createElement('div');
+    notification.className = 'notification success enhanced-save-notification';
+    notification.innerHTML = `
+        <div class="notification-content">
+            <div class="notification-main">
+                <i class="fas fa-check-circle"></i>
+                <span>Changes saved locally!</span>
+            </div>
+            <div class="notification-actions">
+                <button class="btn-mini-success" onclick="saveToDataFile(); this.closest('.notification').remove();">
+                    <i class="fas fa-file-code"></i> Make Permanent
+                </button>
+                <button class="btn-mini-secondary" onclick="this.closest('.notification').remove();">
+                    <i class="fas fa-times"></i> Dismiss
+                </button>
+            </div>
+        </div>
+    `;
+    
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: var(--bg-secondary);
+        color: var(--text-primary);
+        padding: 1rem;
+        border-radius: 10px;
+        border: 2px solid var(--primary-color);
+        z-index: 10000;
+        font-family: var(--font-secondary);
+        font-weight: 600;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        min-width: 320px;
+    `;
+    
+    document.body.appendChild(notification);
+    
+    // Auto-remove after 10 seconds if no action taken
+    setTimeout(() => {
+        if (notification.parentNode) {
+            notification.style.animation = 'slideOut 0.3s ease-out';
+            setTimeout(() => notification.remove(), 300);
+        }
+    }, 10000);
 }
 
 // Function to debug current localStorage state
@@ -2298,6 +2417,153 @@ window.debugStorageState = function() {
         console.log('[DEBUG] Current memory certifications:', portfolioData.certifications.map(c => ({name: c.name, order: c.order})));
     }
 };
+
+// Add enhanced notification styles
+const enhancedNotificationStyles = `
+<style>
+.enhanced-save-notification .notification-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.enhanced-save-notification .notification-main {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.enhanced-save-notification .notification-actions {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+}
+
+.btn-mini-success, .btn-mini-secondary {
+    padding: 4px 8px;
+    border: none;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: all 0.3s ease;
+}
+
+.btn-mini-success {
+    background: var(--primary-color);
+    color: var(--bg-primary);
+}
+
+.btn-mini-success:hover {
+    background: #00cc70;
+    transform: translateY(-1px);
+}
+
+.btn-mini-secondary {
+    background: var(--bg-tertiary);
+    color: var(--text-secondary);
+}
+
+.btn-mini-secondary:hover {
+    background: var(--border-color);
+    color: var(--text-primary);
+}
+
+.usage-instructions {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: var(--bg-tertiary);
+    border-radius: 10px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.usage-instructions h4 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.usage-instructions ol {
+    margin-left: 1rem;
+}
+
+.usage-instructions li {
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+}
+
+.usage-instructions code {
+    background: var(--bg-primary);
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: var(--primary-color);
+    font-family: 'Courier New', monospace;
+}
+
+.data-management-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.data-management-grid > div {
+    padding: 1.5rem;
+    background: var(--bg-tertiary);
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+}
+
+.data-management-grid h4 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.btn-success {
+    background: var(--primary-color);
+    color: var(--bg-primary);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-success:hover {
+    background: #00cc70;
+    transform: translateY(-2px);
+}
+
+.btn-warning {
+    background: #ffa502;
+    color: var(--bg-primary);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-warning:hover {
+    background: #ff8502;
+    transform: translateY(-2px);
+}
+</style>
+`;
+
+// Inject styles when admin loads
+document.addEventListener('DOMContentLoaded', function() {
+    document.head.insertAdjacentHTML('beforeend', enhancedNotificationStyles);
+});
 
 // Ensure all items have proper sequential order numbers
 function ensureOrderIntegrity() {
