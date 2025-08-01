@@ -1,7 +1,7 @@
 // ===================== ADMIN PANEL FUNCTIONALITY =====================
 
 // Security: Password hash for secure authentication  
-const ADMIN_PASSWORD_HASH = 'f7d8a6b4c2e9f5a3d1c8b6f4a2e7d5c3a1f8b6d4c2a9f7e5b3d1c8a6f4e2d9c7b5';
+const ADMIN_PASSWORD_HASH = '93331b426a3c91d908c63ce9654d15eb09e586e7a0570327f82e67852cb84770';
 let isAdminAuthenticated = false;
 let sessionTimeout = null;
 const SESSION_DURATION = 30 * 60 * 1000; // 30 minutes
@@ -1722,7 +1722,7 @@ function saveProfile(e) {
     const phone = sanitizeInput(document.getElementById('profile-phone').value);
     if (phone) portfolioData.profile.phone = phone;
     
-    const linkedin = sanitizeInput(document.getElementById('profile-linkedin').value);
+    const linkedin = document.getElementById('profile-linkedin').value;
     if (linkedin) portfolioData.profile.linkedin = linkedin;
     
     const github = document.getElementById('profile-github').value;

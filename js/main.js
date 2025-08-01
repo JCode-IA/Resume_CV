@@ -171,6 +171,7 @@ function updateMainContent() {
     updateExperienceSection();
     updateCertificationsSection();
     updateHeroSection();
+    updateCommsSection();
     
     console.log('[DEBUG] All sections updated');
 }
@@ -394,6 +395,82 @@ function updateCertificationsSection() {
                 </div>
             </div>
         `).join('');
+    }
+}
+
+function updateCommsSection() {
+    console.log('[DEBUG] updateCommsSection called');
+    
+    // Update GitHub link if element exists
+    const githubCard = document.querySelector('.github-card');
+    if (githubCard && portfolioData.profile.github) {
+        let githubUrl = portfolioData.profile.github;
+        let displayText = portfolioData.profile.github;
+        
+        // Handle any existing encoded characters
+        try {
+            if (githubUrl.includes('%') || githubUrl.includes('&#x2F;')) {
+                githubUrl = githubUrl.replace(/&#x2F;/g, '/');
+                displayText = displayText.replace(/&#x2F;/g, '/');
+                if (githubUrl.includes('%')) {
+                    githubUrl = decodeURIComponent(githubUrl);
+                    displayText = decodeURIComponent(displayText);
+                }
+            }
+        } catch (e) {
+            console.warn('URL decoding failed, using original:', e);
+        }
+        
+        // Ensure proper URL format for href
+        if (!githubUrl.startsWith('http://') && !githubUrl.startsWith('https://')) {
+            githubUrl = 'https://' + githubUrl;
+        }
+        
+        // Clean display text (remove protocol for display)
+        displayText = displayText.replace(/^https?:\/\//, '');
+        
+        githubCard.href = githubUrl;
+        githubCard.textContent = displayText;
+        console.log('[DEBUG] Updated GitHub URL:', githubUrl, 'Display:', displayText);
+    }
+    
+    // Update LinkedIn link if element exists
+    const linkedinCard = document.querySelector('.linkedin-card');
+    if (linkedinCard && portfolioData.profile.linkedin) {
+        let linkedinUrl = portfolioData.profile.linkedin;
+        let displayText = portfolioData.profile.linkedin;
+        
+        console.log('[DEBUG] Original LinkedIn URL:', linkedinUrl);
+        
+        // Handle any existing encoded characters (for backward compatibility)
+        try {
+            if (linkedinUrl.includes('%') || linkedinUrl.includes('&#x2F;')) {
+                linkedinUrl = linkedinUrl.replace(/&#x2F;/g, '/');
+                displayText = displayText.replace(/&#x2F;/g, '/');
+                if (linkedinUrl.includes('%')) {
+                    linkedinUrl = decodeURIComponent(linkedinUrl);
+                    displayText = decodeURIComponent(displayText);
+                }
+                console.log('[DEBUG] After decoding:', linkedinUrl);
+            }
+        } catch (e) {
+            console.warn('[DEBUG] URL decoding failed, using original:', e);
+        }
+        
+        // Ensure proper URL format for href
+        if (!linkedinUrl.startsWith('http://') && !linkedinUrl.startsWith('https://')) {
+            linkedinUrl = 'https://' + linkedinUrl;
+        }
+        
+        // Clean display text (remove protocol for display)
+        displayText = displayText.replace(/^https?:\/\//, '');
+        
+        console.log('[DEBUG] Final LinkedIn URL:', linkedinUrl);
+        console.log('[DEBUG] Final display text:', displayText);
+        
+        linkedinCard.href = linkedinUrl;
+        linkedinCard.textContent = displayText;
+        console.log('[DEBUG] LinkedIn card updated successfully');
     }
 }
 
